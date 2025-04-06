@@ -8,6 +8,7 @@
 		"dev": "pnpm -r dev",
 		"test": "pnpm -r test",
 		"lint": "pnpm -r lint",
+		"build": "tsc --build",
 		"clean": "pnpm -r clean",
 		"fmt": "biome check --fix --unsafe ."
 	},
