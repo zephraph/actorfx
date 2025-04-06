@@ -1,0 +1,44 @@
+{
+	"name": "@actorfx/cloudflare",
+	"version": "0.0.1",
+	"description": "ActorFX integration for Cloudflare Workers",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/zephraph/actorfx.git",
+		"directory": "packages/cloudflare"
+	},
+	"type": "module",
+	"sideEffects": false,
+	"exports": {
+		".": {
+			"types": "./src/index.ts",
+			"import": "./src/index.ts"
+		}
+	},
+	"publishConfig": {
+		"access": "public",
+		"exports": {
+			".": {
+				"types": "./dist/index.d.ts",
+				"import": "./dist/index.js"
+			}
+		}
+	},
+	"files": ["dist"],
+	"scripts": {
+		"dev": "tsc --watch",
+		"clean": "rm -rf dist",
+		"test": "vitest"
+	},
+	"dependencies": {
+		"@actorfx/core": "workspace:*",
+		"effection": "4.0.0-alpha.7"
+	},
+	"devDependencies": {
+		"@cloudflare/workers-types": "^4.20250416.0",
+		"typescript": "^5.4.2",
+		"vitest": "^3.1.1",
+		"wrangler": "^4.9.0"
+	}
+}
