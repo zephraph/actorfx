@@ -1,0 +1,10 @@
+[env]
+_.path = ["node_modules/.bin"]
+
+[tasks]
+build = "tsc --build"
+dev = "pnpm -r dev"
+test = "pnpm -r test"
+lint = "pnpm -r lint"
+clean = ["pnpm -r clean"]
+fmt = "biome check --fix --unsafe ."

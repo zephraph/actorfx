@@ -1,0 +1,2 @@
+# Mark worker-configuration.d.ts files as generated
+**/worker-configuration.d.ts linguist-generated=true
