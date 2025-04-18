@@ -1,0 +1,52 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+        with:
+          # Required fetch depth for changesets/action to determine changes
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }} # Use a PAT if GITHUB_TOKEN restrictions cause issues
+
+      # Setup mise to install Node, pnpm, etc. based on mise.toml
+      - name: Setup mise
+        uses: jdx/mise-action@v2
+
+      # If you're using pnpm, uncomment this install step
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Create Release Pull Request or Publish
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          # You MUST specify a command that runs BOTH the build and the publish steps
+          # This is because the action checks out the ref specified in the push event
+          # which might not contain the latest build artifacts
+          # Ensure the 'mise run release' task runs both build and publish
+          publish: mise run release
+          title: Create Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Log published packages
+        if: steps.changesets.outputs.published == 'true'
+        run: |
+          echo "Published packages: ${{ steps.changesets.outputs.publishedPackages }}" 
