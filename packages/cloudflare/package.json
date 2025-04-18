@@ -1,6 +1,6 @@
 {
 	"name": "@actorfx/cloudflare",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "ActorFX integration for Cloudflare Workers",
 	"license": "MIT",
 	"repository": {
@@ -25,7 +25,9 @@
 			}
 		}
 	},
-	"files": ["dist"],
+	"files": [
+		"dist"
+	],
 	"scripts": {
 		"dev": "tsc --watch",
 		"clean": "rm -rf dist",
