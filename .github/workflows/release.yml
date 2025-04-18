@@ -41,8 +41,7 @@ jobs:
           # which might not contain the latest build artifacts
           # Ensure the 'mise run release' task runs both build and publish
           publish: mise run release
-          commit: "chore: update package versions and changelogs [skip ci]"
-          title: "chore: release packages"
+          title: Create Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
