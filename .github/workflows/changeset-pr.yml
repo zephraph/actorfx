@@ -23,6 +23,9 @@ jobs:
           # Required fetch depth for changesets/action to determine changed packages
           fetch-depth: 0
 
+      - name: Fetch main
+        run: git fetch origin main
+
       # Setup mise to install Node, pnpm, etc. based on mise.toml
       - name: Setup mise
         uses: jdx/mise-action@v2
