@@ -12,6 +12,12 @@ fmt = "biome check --fix --unsafe ."
 run = ["tsc --build", "pnpm -r build"]
 depends_post = ["fmt"]
 
+[tasks.release]
+run = "changeset publish"
+depends = ["build"]
 
 [tasks.example]
 run = "pnpm --filter ./examples/{{arg(name=\"example\")}} run dev"
+
+[tools]
+"npm:@changesets/cli" = "2.29.1"

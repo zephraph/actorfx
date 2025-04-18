@@ -1,0 +1,41 @@
+name: Changesets PR Check
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+        with:
+          # Required fetch depth for changesets/action to determine changed packages
+          fetch-depth: 0
+
+      # Setup mise to install Node, pnpm, etc. based on mise.toml
+      - name: Setup mise
+        uses: jdx/mise-action@v2
+
+      # If you're using pnpm, uncomment this install step
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run Changeset Check
+        uses: changesets/action@v1
+        with:
+          commit: "chore: update package versions and changelogs [skip ci]"
+          title: "chore: release packages"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }} 
