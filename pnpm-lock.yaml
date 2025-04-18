@@ -19,6 +19,19 @@ importers:
         specifier: ^3.1.1
         version: 3.1.1(@types/node@20.17.30)
 
+  examples/chatroom:
+    dependencies:
+      '@actorfx/cloudflare':
+        specifier: workspace:*
+        version: link:../../packages/cloudflare
+      '@actorfx/core':
+        specifier: workspace:*
+        version: link:../../packages/core
+    devDependencies:
+      wrangler:
+        specifier: ^4.9.0
+        version: 4.12.0(@cloudflare/workers-types@4.20250418.0)
+
   packages/cloudflare:
     dependencies:
       '@actorfx/core':

@@ -3,5 +3,6 @@
 	"references": [
 		{ "path": "./packages/core" },
 		{ "path": "./packages/cloudflare" },
+		{ "path": "./examples/chatroom" }
 	]
 }

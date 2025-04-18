@@ -11,3 +11,7 @@ fmt = "biome check --fix --unsafe ."
 [tasks.build]
 run = ["tsc --build", "pnpm -r build"]
 depends_post = ["fmt"]
+
+
+[tasks.example]
+run = "pnpm --filter ./examples/{{arg(name=\"example\")}} run dev"

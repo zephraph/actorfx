@@ -1,0 +1,12 @@
+{
+	"extends": "../../tsconfig.base.json",
+	"compilerOptions": {
+		"outDir": "./dist",
+		"rootDir": "."
+	},
+	"include": ["./**/*"],
+	"references": [
+		{ "path": "../../packages/core" },
+		{ "path": "../../packages/cloudflare" }
+	]
+}

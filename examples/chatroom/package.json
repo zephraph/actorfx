@@ -1,0 +1,17 @@
+{
+	"name": "@actorfx/example-chatroom",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"build": "wrangler types",
+		"dev": "wrangler dev"
+	},
+	"dependencies": {
+		"@actorfx/cloudflare": "workspace:*",
+		"@actorfx/core": "workspace:*"
+	},
+	"devDependencies": {
+		"wrangler": "^4.9.0"
+	}
+}

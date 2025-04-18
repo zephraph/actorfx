@@ -1,0 +1,22 @@
+{
+	"name": "example-chatroom",
+	"main": "main.ts",
+	"compatibility_date": "2025-04-09",
+	"migrations": [
+		{
+			"tag": "v1",
+			"new_classes": ["ActorDurableObject"]
+		}
+	],
+	"durable_objects": {
+		"bindings": [
+			{
+				"class_name": "ActorDurableObject",
+				"name": "ACTOR_DO"
+			}
+		]
+	},
+	"observability": {
+		"enabled": true
+	}
+}
