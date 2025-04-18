@@ -1,6 +1,6 @@
 {
 	"name": "@actorfx/core",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "Core actor framework library",
 	"license": "MIT",
 	"repository": {
@@ -25,7 +25,9 @@
 			}
 		}
 	},
-	"files": ["dist"],
+	"files": [
+		"dist"
+	],
 	"scripts": {
 		"dev": "tsc --watch",
 		"clean": "rm -rf dist",
