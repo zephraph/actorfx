@@ -20,4 +20,4 @@ depends = ["build"]
 run = "pnpm --filter ./examples/{{arg(name=\"example\")}} run dev"
 
 [tools]
-"npm:@changesets/cli" = "2.29.1"
+pnpm = "9.15.1"
